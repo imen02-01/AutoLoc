@@ -12,6 +12,10 @@ import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "client")
 @Getter
@@ -46,4 +50,12 @@ public class Client {
 
     @Column(nullable = false)
     LocalDate dateInscription;
+
+
+    @OneToMany(mappedBy = "client", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    List<Reservation> reservations = new ArrayList<>();
+
+
 }

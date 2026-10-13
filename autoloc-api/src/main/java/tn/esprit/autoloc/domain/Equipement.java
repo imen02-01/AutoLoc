@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
-
+import java.util.HashSet;
+import java.util.Set;
 @Entity
 @Table(name = "equipement")
 @Getter
@@ -29,4 +30,14 @@ public class Equipement {
 
     @Column(nullable = false, length = 100)
     String libelle;
+
+
+
+    @ManyToMany(mappedBy = "equipements", fetch = FetchType.LAZY)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    Set<Vehicule> vehicules = new HashSet<>();
+
+
+
 }

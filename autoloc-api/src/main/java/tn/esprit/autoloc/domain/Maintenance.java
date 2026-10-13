@@ -36,4 +36,13 @@ public class Maintenance {
 
     @Column(length = 255)
     String description;
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    Vehicule vehicule;
+
+
+
 }
